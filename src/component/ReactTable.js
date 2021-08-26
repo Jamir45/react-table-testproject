@@ -1,9 +1,9 @@
 import React, { useMemo } from "react";
 import columnData from "../utils/MOCK_DATA.json";
 import { tableColumns, groupHeader } from "../utils/tableUtils/columns";
-import { useTable, useSortBy, useGlobalFilter, useFilters } from "react-table";
+import { useTable, useSortBy, useGlobalFilter, useFilters, usePagination } from "react-table";
 import "./tableStyle.css";
-import SearchInput from "./SearchInput";
+import SearchInput from "../utils/tableUtils/SearchInput";
 
 const ReactTable = () => {
   const columns = useMemo(() => groupHeader, []);
@@ -16,6 +16,15 @@ const ReactTable = () => {
     footerGroups,
     rows,
     state,
+    page,
+    nextPage,
+    previousPage,
+    canPreviousPage,
+    canNextPage,
+    pageOptions,
+    gotoPage,
+    pageCount,
+    setPageSize,
     setGlobalFilter,
     prepareRow,
   } = useTable(
@@ -25,10 +34,11 @@ const ReactTable = () => {
     },
     useFilters,
     useGlobalFilter,
-    useSortBy
+    useSortBy,
+    usePagination,
   );
 
-  const { globalFilter } = state;
+  const { globalFilter, pageIndex, pageSize } = state;
 
   return (
     <>
@@ -54,7 +64,7 @@ const ReactTable = () => {
           ))}
         </thead>
         <tbody {...getTableBodyProps()}>
-          {rows.map((row) => {
+          {page.map((row) => {
             prepareRow(row);
             return (
               <tr {...row.getRowProps()}>
@@ -77,6 +87,62 @@ const ReactTable = () => {
           ))}
         </tfoot>
       </table>
+      <div className="globalSearch">
+        <span>
+          Page <strong>{pageIndex + 1} of {pageOptions.length}</strong>
+        </span>
+        <span>
+          | Go to page:
+          <input type="number" defaultValue={pageIndex + 1} onChange={(e) => {
+            const pageNumber = e.target.value ? Number(e.target.value) - 1 : 0
+            gotoPage(pageNumber)
+          }}
+            style={{ width: '50px' }}
+          />
+        </span>
+        <span>
+          | Page Size:
+          <select
+            value={pageSize}
+            className="pageSelection"
+            onChange={(e) => setPageSize(Number(e.target.value))}
+          >
+            {
+              [10, 15, 20, 25].map(pageNumber => {
+                return (
+                  <option value={pageNumber}>
+                    Show {pageNumber}
+                  </option>
+                )
+              })
+            }
+          </select>
+        </span>
+        <button
+          onClick={() => gotoPage(0)}
+          disabled={!canPreviousPage}
+        >
+          {'<<First'}
+        </button>
+        <button
+          onClick={() => previousPage()}
+          disabled={!canPreviousPage}
+        >
+          Previous
+        </button>
+        <button
+          onClick={() => nextPage()}
+          disabled={!canNextPage}
+        >
+          Next
+        </button>
+        <button
+          onClick={() => gotoPage(pageCount - 1)}
+          disabled={!canNextPage}
+        >
+          {'Last>>'}
+        </button>
+      </div>
     </>
   );
 };

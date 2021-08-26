@@ -1,5 +1,5 @@
 import { format } from "date-fns";
-import ColumsFilter from "../../component/ColumsFilter";
+import ColumsFilter from "../tableUtils/ColumsFilter";
 
 export const tableColumns = [
   {
@@ -11,7 +11,6 @@ export const tableColumns = [
     Header: "First Name",
     Footer: "First Name",
     accessor: "first_name",
-    Filter: ColumsFilter,
   },
   {
     Header: "Last Name",
@@ -22,9 +21,9 @@ export const tableColumns = [
     Header: "Date of Birth",
     Footer: "Date of Birth",
     accessor: "date_of_birth",
-    Cell: ({ value }) => {
-      return format(new Date(value), "dd/MM/yyyy");
-    },
+    // Cell: ({ value }) => {
+    //   return format(new Date(value), "dd/MM/yyyy");
+    // },
   },
   {
     Header: "Gender",
@@ -58,6 +57,7 @@ export const groupHeader = [
         Footer: "Id",
         accessor: "id",
         Filter: ColumsFilter,
+        disableFilters: true,
       },
     ],
   },

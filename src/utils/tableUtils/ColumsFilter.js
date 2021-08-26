@@ -5,7 +5,7 @@ const ColumsFilter = ({ column }) => {
   return (
     <div>
       Search
-      <input
+      <input style={{ width: '95%' }}
         value={filterValue || ""}
         onChange={(e) => setFilter(e.target.value)}
       />
