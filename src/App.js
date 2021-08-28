@@ -1,9 +1,9 @@
-import ReactTable from "./component/ReactTable";
+import TablePage from "./pages/TablePage";
 
 function App() {
   return (
     <div>
-      <ReactTable />
+      <TablePage />
     </div>
   );
 }

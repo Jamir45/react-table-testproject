@@ -1,16 +1,16 @@
 import React from "react";
 
-const ColumsFilter = ({ column }) => {
+const ColumnsSearch = ({ column }) => {
   const { filterValue, setFilter } = column;
   return (
     <div>
-      Search
       <input style={{ width: '95%' }}
         value={filterValue || ""}
+        placeholder='Search'
         onChange={(e) => setFilter(e.target.value)}
       />
     </div>
   );
 };
 
-export default ColumsFilter;
+export default ColumnsSearch;

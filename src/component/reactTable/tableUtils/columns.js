@@ -1,49 +1,31 @@
 import { format } from "date-fns";
-import ColumsFilter from "../tableUtils/ColumsFilter";
+import ColumnsSearch from "./ColumnsSearch";
 
 export const tableColumns = [
   {
-    Header: "Id",
-    Footer: "Id",
-    accessor: "id",
+    Header: "Country Name",
+    accessor: "name",
+    Filter: ColumnsSearch,
   },
   {
-    Header: "First Name",
-    Footer: "First Name",
-    accessor: "first_name",
+    Header: "Capital",
+    accessor: "capital",
+    Filter: ColumnsSearch,
   },
   {
-    Header: "Last Name",
-    Footer: "Last Name",
-    accessor: "last_name",
+    Header: "Region",
+    accessor: "region",
+    Filter: ColumnsSearch,
   },
   {
-    Header: "Date of Birth",
-    Footer: "Date of Birth",
-    accessor: "date_of_birth",
-    // Cell: ({ value }) => {
-    //   return format(new Date(value), "dd/MM/yyyy");
-    // },
+    Header: "Population",
+    accessor: "population",
+    Filter: ColumnsSearch,
   },
   {
-    Header: "Gender",
-    Footer: "Gender",
-    accessor: "gender",
-  },
-  {
-    Header: "Country",
-    Footer: "Country",
-    accessor: "country",
-  },
-  {
-    Header: "Email",
-    Footer: "Email",
-    accessor: "email",
-  },
-  {
-    Header: "Phone",
-    Footer: "Phone",
-    accessor: "phone",
+    Header: "Languages",
+    accessor: "languages[0].name",
+    Filter: ColumnsSearch,
   },
 ];
 
@@ -56,7 +38,7 @@ export const groupHeader = [
         Header: "Id",
         Footer: "Id",
         accessor: "id",
-        Filter: ColumsFilter,
+        Filter: ColumnsSearch,
         disableFilters: true,
       },
     ],
@@ -69,13 +51,13 @@ export const groupHeader = [
         Header: "First Name",
         Footer: "First Name",
         accessor: "first_name",
-        Filter: ColumsFilter,
+        Filter: ColumnsSearch,
       },
       {
         Header: "Last Name",
         Footer: "Last Name",
         accessor: "last_name",
-        Filter: ColumsFilter,
+        Filter: ColumnsSearch,
       },
     ],
   },
@@ -87,19 +69,19 @@ export const groupHeader = [
         Header: "Date of Birth",
         Footer: "Date of Birth",
         accessor: "date_of_birth",
-        Filter: ColumsFilter,
+        Filter: ColumnsSearch,
       },
       {
         Header: "Gender",
         Footer: "Gender",
         accessor: "gender",
-        Filter: ColumsFilter,
+        Filter: ColumnsSearch,
       },
       {
         Header: "Country",
         Footer: "Country",
         accessor: "country",
-        Filter: ColumsFilter,
+        Filter: ColumnsSearch,
       },
     ],
   },
@@ -111,13 +93,13 @@ export const groupHeader = [
         Header: "Email",
         Footer: "Email",
         accessor: "email",
-        Filter: ColumsFilter,
+        Filter: ColumnsSearch,
       },
       {
         Header: "Phone",
         Footer: "Phone",
         accessor: "phone",
-        Filter: ColumsFilter,
+        Filter: ColumnsSearch,
       },
     ],
   },
