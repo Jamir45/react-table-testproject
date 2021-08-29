@@ -26,31 +26,41 @@ table th {
   color: white;
 }
 
-
-
 .globalSearch {
-    text-align: center;
-    background: orange;
-    padding: 10px;
-    font-size: 20px;
+  text-align: center;
+  background: orange;
+  padding: 10px;
+  font-size: 20px;
 }
 .globalSearch input {
-    width: 250px;
-    padding: 5px;
-    font-size: 20px;
-    border-radius: 5px;
-    margin: 0px 10px;
+  width: 250px;
+  padding: 5px;
+  font-size: 20px;
+  border-radius: 5px;
+  margin: 0px 10px;
 }
 
 button {
-    font-size: 20px;
-    padding: 5px 10px;
-    border-radius: 5px;
+  font-size: 20px;
+  padding: 5px 10px;
+  border-radius: 5px;
 }
 
-.pageSelection{
+.pageSelection {
   font-size: 20px;
   padding: 5px 10px;
   border-radius: 5px;
   margin: 0px 15px 0px 5px;
+}
+
+/* Table Nav bar stye here */
+.tableMenu ul {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  list-style: none;
+}
+
+.tableMenu ul li {
+  margin: 0px 10px;
 }
